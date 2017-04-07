@@ -44,29 +44,29 @@
                 <li>
                     <a href="_secondary.html" class="first">Slide to the right, and load content from a secondary page.</a>
                     <pre>
-                        &lt;a href=&quot;_secondary.html&quot; class=&quot;first&quot;&gt;Link text&lt;/a&gt;
-                        &lt;script&gt;
-                            $(&quot;a.first&quot;).pageslide();
-                        &lt;/script&gt;
+&lt;a href=&quot;_secondary.html&quot; class=&quot;first&quot;&gt;Link text&lt;/a&gt;
+&lt;script&gt;
+    $(&quot;a.first&quot;).pageslide();
+&lt;/script&gt;
                     </pre>
                 </li>
                 <li>
                     <a href="#modal" class="second">Slide to the left, and display hidden content from this page in a modal pane.</a>
                     <pre>
-                        &lt;a href=&quot;#modal&quot; class=&quot;second&quot;&gt;Link text&lt;/a&gt;
-                        &lt;div id=&quot;modal&quot; style=&quot;display:none&quot;&gt;
-                            &lt;h2&gt;Modal&lt;/h2&gt;
-                            &lt;a href=&quot;javascript:$.pageslide.close()&quot;&gt;Close&lt;/a&gt;
-                        &lt;/div&gt;
-                        &lt;script&gt;
-                            $(&quot;.second&quot;).pageslide({ direction: &quot;left&quot;, modal: true });
-                        &lt;/script&gt;
+&lt;a href=&quot;#modal&quot; class=&quot;second&quot;&gt;Link text&lt;/a&gt;
+&lt;div id=&quot;modal&quot; style=&quot;display:none&quot;&gt;
+    &lt;h2&gt;Modal&lt;/h2&gt;
+    &lt;a href=&quot;javascript:$.pageslide.close()&quot;&gt;Close&lt;/a&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    $(&quot;.second&quot;).pageslide({ direction: &quot;left&quot;, modal: true });
+&lt;/script&gt;
                     </pre>
                 </li>
                 <li>
                     <a href="javascript:$.pageslide({ direction: 'left', href: '_secondary.html' })">Open the page programatically.</a>
                     <pre>
-                        &lt;a href=&quot;javascript:$.pageslide({ direction: &#39;left&#39;, href=&#39;_secondary.html&#39; })&quot;&gt;Link text&lt;/a&gt;
+&lt;a href=&quot;javascript:$.pageslide({ direction: &#39;left&#39;, href=&#39;_secondary.html&#39; })&quot;&gt;Link text&lt;/a&gt;
                     </pre>
                 </li>
             </ul>
@@ -77,10 +77,12 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="../jquery.pageslide.min.js"></script>
+        <script src="../jquery.pageslide.js"></script>
         <script>
             /* Default pageslide, moves to the right */
-            $(".first").pageslide();
+            $(".first").pageslide({
+                disableRefresh: true,
+            });
 
             /* Slide to the left, and make it model (you'll have to call $.pageslide.close() to close) */
             $(".second").pageslide({direction: "left", modal: true});
