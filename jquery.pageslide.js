@@ -5,7 +5,7 @@
  *
  * jQuery Javascript plugin which slides a webpage over to reveal an additional interaction pane.
  *
- * Copyright (c) 2011 Scott Robbin (srobbin.com)
+ * Copyright (c) 2017 Scott Robbin (srobbin.com) Théo Bougé
  * Dual licensed under the MIT and GPL licenses.
  */
 
