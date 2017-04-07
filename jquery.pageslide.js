@@ -27,31 +27,34 @@
     /*
      * Private methods
      */
-    function _load(url, useIframe) {
-        // Are we loading an element from the page or a URL?
-        if (url.indexOf("#") === 0) {
-            // Load a page element
-            $(url).clone(true).appendTo($pageslide.empty()).show();
-        } else {
-            // Load a URL. Into an iframe?
-            if (useIframe) {
-                var iframe = $("<iframe />").attr({
-                    src: url,
-                    frameborder: 0,
-                    hspace: 0
-                })
-                        .css({
-                            width: "100%",
-                            height: "100%"
-                        });
-
-                $pageslide.html(iframe);
+    function _load(url, useIframe, callOnce) {
+        if (!callOnce || !_alreadyCalled) {
+            // Are we loading an element from the page or a URL?
+            if (url.indexOf("#") === 0) {
+                // Load a page element
+                $(url).clone(true).appendTo($pageslide.empty()).show();
             } else {
-                $pageslide.load(url);
+                // Load a URL. Into an iframe?
+                if (useIframe) {
+                    var iframe = $("<iframe />").attr({
+                        src: url,
+                        frameborder: 0,
+                        hspace: 0
+                    })
+                            .css({
+                                width: "100%",
+                                height: "100%"
+                            });
+
+                    $pageslide.html(iframe);
+                } else {
+                    $pageslide.load(url);
+                }
+
+                $pageslide.data('localEl', false);
+
             }
-
-            $pageslide.data('localEl', false);
-
+            _alreadyCalled = true;
         }
     }
 
@@ -123,7 +126,8 @@
         direction: 'right', // Accepts 'left' or 'right'
         modal: false, // If set to true, you must explicitly close pageslide using $.pageslide.close();
         iframe: true, // By default, linked pages are loaded into an iframe. Set this to false if you don't want an iframe.
-        href: null        // Override the source of the content. Optional in most cases, but required when opening pageslide programmatically.
+        href: null, // Override the source of the content. Optional in most cases, but required when opening pageslide programmatically.
+        refresh: false // is the content is refreshed each time we open the pageslide
     };
 
     /*
@@ -138,11 +142,11 @@
         // Are we trying to open in different direction?
         if ($pageslide.is(':visible') && $pageslide.data('direction') != settings.direction) {
             $.pageslide.close(function () {
-                _load(settings.href, settings.iframe);
+                _load(settings.href, settings.iframe, settings.refresh);
                 _start(settings.direction, settings.speed);
             });
         } else {
-            _load(settings.href, settings.iframe);
+            _load(settings.href, settings.iframe, settings.refresh);
             if ($pageslide.is(':hidden')) {
                 _start(settings.direction, settings.speed);
             }
