@@ -1,1 +1,5 @@
+# mac crap
 .DS_Store
+
+#ide files
+/nbproject
