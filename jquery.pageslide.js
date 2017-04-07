@@ -15,7 +15,8 @@
             $pageslide = $('#pageslide');
 
     var _sliding = false, // Mutex to assist closing only once
-            _lastCaller;        // Used to keep track of last element to trigger pageslide
+            _lastCaller, // Used to keep track of last element to trigger pageslide
+            _alreadyCalled = false; //used to keep track if the pageslide have allready been called once
 
     // If the pageslide element doesn't exist, create it
     if ($pageslide.length == 0) {
