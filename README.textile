@@ -30,7 +30,7 @@ Override the source of the content. Optional in most cases, but required when op
 
 h3. disableRefresh
 
-Is the content is refreshed each time we open the Pageslide
+Is the content is refreshed each time we open the Pageslide. (default=false)
 
 h2. Setup
 
