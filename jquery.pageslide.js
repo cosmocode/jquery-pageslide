@@ -128,7 +128,7 @@
         modal: false, // If set to true, you must explicitly close pageslide using $.pageslide.close();
         iframe: true, // By default, linked pages are loaded into an iframe. Set this to false if you don't want an iframe.
         href: null, // Override the source of the content. Optional in most cases, but required when opening pageslide programmatically.
-        refresh: false // is the content is refreshed each time we open the pageslide
+        disableRefresh: false // is the content is refreshed each time we open the pageslide
     };
 
     /*
@@ -143,11 +143,11 @@
         // Are we trying to open in different direction?
         if ($pageslide.is(':visible') && $pageslide.data('direction') != settings.direction) {
             $.pageslide.close(function () {
-                _load(settings.href, settings.iframe, settings.refresh);
+                _load(settings.href, settings.iframe, settings.disableRefresh);
                 _start(settings.direction, settings.speed);
             });
         } else {
-            _load(settings.href, settings.iframe, settings.refresh);
+            _load(settings.href, settings.iframe, settings.disableRefresh);
             if ($pageslide.is(':hidden')) {
                 _start(settings.direction, settings.speed);
             }
