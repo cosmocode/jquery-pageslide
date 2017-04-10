@@ -28,6 +28,10 @@ h3. href
 
 Override the source of the content. Optional in most cases, but required when opening pageslide programmatically (e.g. <code>$.pageslide({ href: '#some-element' });</code> ) (default=null)
 
+h3. disableRefresh
+
+Is the content is refreshed each time we open the Pageslide. (default=false)
+
 h2. Setup
 
 In the HEAD tag:
@@ -58,6 +62,9 @@ To close pageslide programatically:
 </code></pre>
 
 h2. Changelog
+
+h3. Version 2.1
+* Add an option to disable the refresh of the content each time we open it
 
 h3. Version 2.0
 
